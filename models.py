@@ -23,6 +23,12 @@ class PlayerAction(BaseModel):
 class JoinResponse(BaseModel):
     seat_number: int
 
+# Model for the valid actions a player can take.
+class ValidActionsResponse(BaseModel):
+    actions: List[Literal["fold", "check", "call", "bet", "raise"]]
+    call_amount: Optional[int] = None
+    min_raise_amount: Optional[int] = None
+
 # Corresponds to a row in the 'seats' table, joined with 'profiles'
 class Player(BaseModel):
     user_id: UUID
